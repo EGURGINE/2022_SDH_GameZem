@@ -3,10 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Rendering.Universal;
+
 public class GameManager : Singleton<GameManager>
 {
-    [SerializeField] TextMeshProUGUI scoreTxt;
+    [SerializeField] private GameObject Ingame;
+    [SerializeField] private GameObject gameOver;
 
+    [SerializeField] private TextMeshProUGUI scoreTxt;
+
+    [SerializeField] private TextMeshProUGUI highScoreTxt;
     public float highScore;
 
     private float score;
@@ -49,8 +55,9 @@ public class GameManager : Singleton<GameManager>
         set 
         { 
             timeOver = value;
+            if (timeOver < 0) timeOver = 0;
 
-            if (timeOverSlider.value > maxTime) GameOver();
+            if (timeOver >= maxTime) GameOver();
 
             timeOverSlider.value = value / maxTime;
         }
@@ -72,18 +79,35 @@ public class GameManager : Singleton<GameManager>
 
     public void StartSET()
     {
+        isGameOver = false;
+        Ingame.SetActive(true);
+        gameOver.SetActive(false);
+
         maxTime = 15f;
         Score = 0;
         TimeOver = 0;
+
+        Spawner.Instance.blockList.Clear();
+        Spawner.Instance.StartGame();
     }
     public void GameOver()
     {
         isGameOver = true;
 
+        foreach (var item in Spawner.Instance.blockList)
+        {
+            Spawner.Instance.Push(item);
+        }
+
+
         if (score > highScore)
         {
             highScore = score;
         }
+        highScoreTxt.text = highScore.ToString();
+
+        Ingame.SetActive(false);
+        gameOver.SetActive(true);
         // ø¨√‚
     }
 }

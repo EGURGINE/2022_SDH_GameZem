@@ -10,13 +10,13 @@ public class Spawner : Singleton<Spawner>
     private Stack<Block> blockStack = new Stack<Block>();
     public List<Block> blockList = new List<Block>();
 
+    private int posY;
+
     private void Start()
     {
         CreateObj();
-        StartGame();
     }
 
-        int i;
     public void StartGame()
     {
         for (int i = 0; i < 4; i++)
@@ -58,10 +58,11 @@ public class Spawner : Singleton<Spawner>
         obj.gameObject.SetActive(true);
         foreach (var item in blockList)
         {
-            item.transform.position = new Vector2(0,i);
-            i++;
+            item.transform.Rotate(0, Random.Range(0,360), 0);
+            item.transform.position = new Vector2(0,posY * 0.6f);
+            posY++;
         }
-        i = 0;
+        posY = 0;
     }
     public void Next()
     {
