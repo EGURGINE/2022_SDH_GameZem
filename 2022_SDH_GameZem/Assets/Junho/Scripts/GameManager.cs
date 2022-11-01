@@ -29,15 +29,15 @@ public class GameManager : Singleton<GameManager>
 
             if (score > 500)
             {
-                maxTime = 5f;
+                maxTime = 3.5f;
             }
             else if ( score > 300)
             {
-                maxTime = 8f;
+                maxTime = 4f;
             }
             else if(score > 100)
             {
-                maxTime = 10f;
+                maxTime = 4.5f;
             }
         }
     }
@@ -83,7 +83,7 @@ public class GameManager : Singleton<GameManager>
         Ingame.SetActive(true);
         gameOver.SetActive(false);
 
-        maxTime = 15f;
+        maxTime = 5f;
         Score = 0;
         TimeOver = 0;
 
@@ -94,6 +94,7 @@ public class GameManager : Singleton<GameManager>
     {
         isGameOver = true;
 
+        Spawner.Instance.darumaObj.SetActive(false);
         foreach (var item in Spawner.Instance.blockList)
         {
             Spawner.Instance.Push(item);

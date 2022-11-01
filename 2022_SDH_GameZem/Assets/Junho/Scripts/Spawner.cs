@@ -5,20 +5,28 @@ using DG.Tweening;
 
 public class Spawner : Singleton<Spawner>
 {
+    public GameObject darumaObj;
+
     [SerializeField] private Block blockObj;
     [SerializeField] private GameObject blocks;
     private Stack<Block> blockStack = new Stack<Block>();
     public List<Block> blockList = new List<Block>();
 
+    [SerializeField] private GameObject hammer;
+
     private int posY;
+
+    private int isRight;
 
     private void Start()
     {
         CreateObj();
+        isRight = -1;
     }
 
     public void StartGame()
     {
+        darumaObj.SetActive(true);
         for (int i = 0; i < 4; i++)
         {
             Pop();
@@ -58,10 +66,18 @@ public class Spawner : Singleton<Spawner>
         obj.gameObject.SetActive(true);
         foreach (var item in blockList)
         {
-            item.transform.Rotate(0, Random.Range(0,360), 0);
-            item.transform.position = new Vector2(0,posY * 0.6f);
+            item.transform.Rotate(0, Random.Range(0, 360), 0);
+            item.transform.position = new Vector2(0, posY * 0.6f);
             posY++;
         }
+        Camera.main.transform.DOShakePosition(1,0.1f); 
+        hammer.transform.DORotate(new Vector3(0, 85 * isRight, 0), 0.1f);
+
+        if (isRight > 0)
+        {
+            isRight = -1;
+        }
+        else isRight = 1;
         posY = 0;
     }
     public void Next()
