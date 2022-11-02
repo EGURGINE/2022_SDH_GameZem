@@ -77,6 +77,65 @@ public class GameManager : Singleton<GameManager>
         }
     }
 
+    public List<EColor> eColors = new List<EColor>();
+
+    public IEnumerator CntCoroutine()
+    {
+        yield return new WaitForSeconds(0.3f);
+        GameOver();
+    }
+
+    private bool check1;
+    private bool check2;
+
+    public void Checker(EColor _color)
+    {
+        if (Spawner.Instance.blockList[0].isColor.Length == 2)
+        {
+            eColors.Add(_color);
+
+            if (eColors.Count == 2)
+            {
+
+                foreach (var item in Spawner.Instance.blockList[0].isColor)
+                {
+                    if (item == eColors[0]) check1 = true;
+                    if (item == eColors[1]) check2 = true;
+
+                }
+                if (check1 == true && check2 == true)
+                {
+                    eColors.Clear();
+                    NextBlock();
+                }
+                else GameOver();
+            }
+        }
+        else
+        {
+
+            if (Spawner.Instance.blockList[0].isColor[0] == _color)
+            {
+                NextBlock();
+
+            }
+            else
+            {
+                GameOver();
+            }
+        }
+
+    }
+
+    public void NextBlock()
+    {
+        Score += 50;
+        TimeOver -= 1;
+        SetTimeValue();
+        Spawner.Instance.Next();
+    }
+
+
     public void StartSET()
     {
         isGameOver = false;
@@ -94,7 +153,7 @@ public class GameManager : Singleton<GameManager>
     public void GameOver()
     {
         isGameOver = true;
-
+        eColors.Clear();
         Spawner.Instance.darumaObj.SetActive(false);
         foreach (var item in Spawner.Instance.blockList)
         {

@@ -12,11 +12,31 @@ public enum EColor
 public class Block : MonoBehaviour
 {
     [SerializeField] Material[] colorsM;
+    public bool isSingle;
+    public EColor[] isColor;
 
-    public EColor color;
-
+    private List<EColor> eColors = new List<EColor>();
     public void SwitchColor(EColor color)
     {
-        this.GetComponent < MeshRenderer >().material = colorsM[((int)color)];
+        if (isSingle)
+        {
+            this.GetComponent <MeshRenderer>().material = colorsM[((int)color)];
+            isColor[0] = color;
+        }
+        else
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                eColors.Add((EColor)i);
+            }
+            eColors.Remove(color);
+            EColor ranColor = eColors[Random.Range(0, 3)];
+            isColor[0] = color;
+            isColor[1] = ranColor;
+
+            transform.GetChild(0).GetComponent<MeshRenderer>().material = colorsM[((int)color)];
+            transform.GetChild(1).GetComponent<MeshRenderer>().material = colorsM[((int)ranColor)];
+            eColors.Clear();
+        }
     }
 }

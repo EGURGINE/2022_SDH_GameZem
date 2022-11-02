@@ -2083,8 +2083,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   darumaObj: {fileID: 2030325514}
-  blockObj: {fileID: 6907573978892129908, guid: f64c9a7de9001b24693adf063d2ce5d8,
-    type: 3}
+  blockObj:
+  - {fileID: 6907573978892129908, guid: f64c9a7de9001b24693adf063d2ce5d8, type: 3}
+  - {fileID: 5376442708376908760, guid: 7fd776df4794c8e40b36a38c3ce21448, type: 3}
   blocks: {fileID: 1144462639}
   blockList: []
   hammer: {fileID: 1761690070}
@@ -3037,6 +3038,7 @@ MonoBehaviour:
   timeOverSlider: {fileID: 1321182822}
   maxTime: 3
   isGameOver: 0
+  eColors: 
 --- !u!4 &1739684099
 Transform:
   m_ObjectHideFlags: 0

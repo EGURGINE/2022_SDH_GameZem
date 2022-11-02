@@ -1,22 +1,44 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class ColorBtn : MonoBehaviour
 {
     [SerializeField] EColor btnColor;
+    Button button;
+    private void Update()
+    {
+        switch (btnColor)
+        {
+            case EColor.RED:
+                if (Input.GetKeyDown(KeyCode.D))
+                {
+                    ColorsBtn();
+                }
+                break;
+            case EColor.ORANGE:
+                if (Input.GetKeyDown(KeyCode.F))
+                {
+                    ColorsBtn();
+                }
+                break;
+            case EColor.YELLOW:
+                if (Input.GetKeyDown(KeyCode.J))
+                {
+                    ColorsBtn();
+                }
+                break;
+            case EColor.GREEN:
+                if (Input.GetKeyDown(KeyCode.K))
+                {
+                    ColorsBtn();
+                }
+                break;
+        }
+
+    }
     public void ColorsBtn()
     {
-        if (Spawner.Instance.blockList[0].color == btnColor)
-        {
-            GameManager.Instance.Score += 50;
-            GameManager.Instance.TimeOver -= 1;
-            GameManager.Instance.SetTimeValue();
-            Spawner.Instance.Next();
-        }
-        else
-        {
-            GameManager.Instance.GameOver();
-        }
+        GameManager.Instance.Checker(btnColor);
     }
 }

@@ -7,7 +7,7 @@ public class Spawner : Singleton<Spawner>
 {
     public GameObject darumaObj;
 
-    [SerializeField] private Block blockObj;
+    [SerializeField] private Block[] blockObj;
     [SerializeField] private GameObject blocks;
     private Stack<Block> blockStack = new Stack<Block>();
     public List<Block> blockList = new List<Block>();
@@ -38,7 +38,7 @@ public class Spawner : Singleton<Spawner>
     {
         for (int i = 0; i < 10; i++)
         {
-            Block obj = Instantiate(blockObj,blocks.transform);
+            Block obj = Instantiate(blockObj[Random.Range(0,2)],blocks.transform);
             obj.transform.position = Vector3.zero;
             blockStack.Push(obj);
             obj.gameObject.SetActive(false);
@@ -48,25 +48,26 @@ public class Spawner : Singleton<Spawner>
 
     public void Push(Block _this)
     {
-        _this.transform.position = Vector3.zero;
+        _this.GetComponent<Transform>().DORestart(true);
+
         _this.transform.parent = blocks.transform;
         blockStack.Push(_this);
         _this.gameObject.SetActive(false);
     }
     public void Pop()
     {
-        EColor ranColor = (EColor)Random.Range(0, 4);
 
         Block obj = blockStack.Pop();
         blockList.Add(obj);
         obj.transform.position = Vector3.zero;
         obj.transform.parent = null;
+
+        EColor ranColor = (EColor)Random.Range(0, 4);
         obj.SwitchColor(ranColor);
-        obj.color = ranColor;
         obj.gameObject.SetActive(true);
         foreach (var item in blockList)
         {
-            item.transform.Rotate(0, Random.Range(0, 360), 0);
+            item.transform.Rotate(0, Random.Range(10, -10), 0);
             item.transform.position = new Vector2(0, posY * 0.6f);
             posY++;
         }
