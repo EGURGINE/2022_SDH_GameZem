@@ -48,8 +48,6 @@ public class Spawner : Singleton<Spawner>
 
     public void Push(Block _this)
     {
-        _this.GetComponent<Transform>().DORestart(true);
-
         _this.transform.parent = blocks.transform;
         blockStack.Push(_this);
         _this.gameObject.SetActive(false);
@@ -59,7 +57,7 @@ public class Spawner : Singleton<Spawner>
 
         Block obj = blockStack.Pop();
         blockList.Add(obj);
-        obj.transform.position = Vector3.zero;
+        obj.transform.DORestart();
         obj.transform.parent = null;
 
         EColor ranColor = (EColor)Random.Range(0, 4);

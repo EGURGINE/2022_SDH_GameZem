@@ -79,12 +79,6 @@ public class GameManager : Singleton<GameManager>
 
     public List<EColor> eColors = new List<EColor>();
 
-    public IEnumerator CntCoroutine()
-    {
-        yield return new WaitForSeconds(0.3f);
-        GameOver();
-    }
-
     private bool check1;
     private bool check2;
 
@@ -105,6 +99,8 @@ public class GameManager : Singleton<GameManager>
                 }
                 if (check1 == true && check2 == true)
                 {
+                    check1 = false;
+                    check1 = false;
                     eColors.Clear();
                     NextBlock();
                 }
