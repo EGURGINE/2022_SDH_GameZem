@@ -79,8 +79,7 @@ public class GameManager : Singleton<GameManager>
 
     public List<EColor> eColors = new List<EColor>();
 
-    private bool check1;
-    private bool check2;
+    private bool check;
 
     public void Checker(EColor _color)
     {
@@ -93,14 +92,16 @@ public class GameManager : Singleton<GameManager>
 
                 foreach (var item in Spawner.Instance.blockList[0].isColor)
                 {
-                    if (item == eColors[0]) check1 = true;
-                    if (item == eColors[1]) check2 = true;
+                    if (Spawner.Instance.blockList[0].isColor[0] == eColors[0] 
+                        && Spawner.Instance.blockList[0].isColor[1] == eColors[1]
+                        || Spawner.Instance.blockList[0].isColor[0] == eColors[1]
+                        && Spawner.Instance.blockList[0].isColor[1] == eColors[0]
+                        ) check = true;
 
                 }
-                if (check1 == true && check2 == true)
+                if (check == true)
                 {
-                    check1 = false;
-                    check1 = false;
+                    check = false;
                     eColors.Clear();
                     NextBlock();
                 }
