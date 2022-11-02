@@ -3035,7 +3035,7 @@ MonoBehaviour:
   highScoreTxt: {fileID: 315908769}
   highScore: 0
   timeOverSlider: {fileID: 1321182822}
-  maxTime: 5
+  maxTime: 3
   isGameOver: 0
 --- !u!4 &1739684099
 Transform:

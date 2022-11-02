@@ -26,19 +26,6 @@ public class GameManager : Singleton<GameManager>
         { 
             score = value; 
             scoreTxt.text = score.ToString();
-
-            if (score > 500)
-            {
-                maxTime = 3.5f;
-            }
-            else if ( score > 300)
-            {
-                maxTime = 4f;
-            }
-            else if(score > 100)
-            {
-                maxTime = 4.5f;
-            }
         }
     }
 
@@ -77,13 +64,27 @@ public class GameManager : Singleton<GameManager>
         StartSET();
     }
 
+    private int timeNum;
+    public void SetTimeValue()
+    {
+        if (maxTime <= 2) return;
+
+        timeNum++;
+        if (timeNum == 2)
+        {
+            timeNum = 0;
+            maxTime -= 0.1f;
+        }
+    }
+
     public void StartSET()
     {
         isGameOver = false;
         Ingame.SetActive(true);
         gameOver.SetActive(false);
 
-        maxTime = 5f;
+        timeNum = 0;
+        maxTime = 3f;
         Score = 0;
         TimeOver = 0;
 

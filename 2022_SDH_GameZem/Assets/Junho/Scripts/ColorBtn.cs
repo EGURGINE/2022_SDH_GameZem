@@ -11,6 +11,7 @@ public class ColorBtn : MonoBehaviour
         {
             GameManager.Instance.Score += 50;
             GameManager.Instance.TimeOver -= 1;
+            GameManager.Instance.SetTimeValue();
             Spawner.Instance.Next();
         }
         else
