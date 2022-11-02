@@ -63,9 +63,9 @@ public class Spawner : Singleton<Spawner>
         EColor ranColor = (EColor)Random.Range(0, 4);
         obj.SwitchColor(ranColor);
         obj.gameObject.SetActive(true);
+        obj.transform.Rotate(0, Random.Range(15, -15), 0);
         foreach (var item in blockList)
         {
-            item.transform.Rotate(0, Random.Range(10, -10), 0);
             item.transform.position = new Vector2(0, posY * 0.6f);
             posY++;
         }
