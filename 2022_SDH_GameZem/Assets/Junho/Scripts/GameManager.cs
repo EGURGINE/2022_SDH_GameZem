@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using UnityEngine.Rendering.Universal;
+using DG.Tweening;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -223,5 +223,7 @@ public class GameManager : Singleton<GameManager>
         Ingame.SetActive(false);
         gameOver.SetActive(true);
         // ø¨√‚
+        gameOver.transform.position = new Vector3(0, 3.8f, -5.9f);
+        gameOver.transform.DOLocalMove(Vector3.zero, 0.5f).SetEase(Ease.Linear);
     }
 }
