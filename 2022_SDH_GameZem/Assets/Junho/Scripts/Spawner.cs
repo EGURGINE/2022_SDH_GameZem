@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.UIElements;
 
 public class Spawner : Singleton<Spawner>
 {
@@ -75,7 +76,7 @@ public class Spawner : Singleton<Spawner>
         EColor ranColor = (EColor)Random.Range(0, 4);
         obj.SwitchColor(ranColor);
         obj.gameObject.SetActive(true);
-        obj.transform.Rotate(0, Random.Range(15, -15), 0);
+        obj.transform.rotation = Quaternion.Euler(0,Random.Range(-15f,16f),0);
         foreach (var item in blockList)
         {
             item.transform.position = new Vector2(0, posY * 0.6f);
