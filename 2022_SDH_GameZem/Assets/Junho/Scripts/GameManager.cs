@@ -129,7 +129,21 @@ public class GameManager : Singleton<GameManager>
         }
 
     }
-
+    private void LevelDesign() 
+    {
+        if (score > 2000)
+        {
+            //두개 확률 업
+        }
+        else if (score > 2000)
+        {
+            //가끔 두개
+        }
+        else
+        {
+            //단색
+        }
+    }
     public void NextBlock()
     {
         SoundManager.Instance.PlaySound(ESoundSources.Hammer);
