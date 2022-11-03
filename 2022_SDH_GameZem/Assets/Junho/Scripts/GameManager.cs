@@ -7,16 +7,19 @@ using UnityEngine.Rendering.Universal;
 
 public class GameManager : Singleton<GameManager>
 {
+    public GameObject TitleObj;
     [SerializeField] private GameObject Ingame;
-    [SerializeField] private GameObject gameOver;
+    public GameObject gameOver;
 
-    [SerializeField] private TextMeshProUGUI scoreTxt;
+    [SerializeField] private GameObject darumaObj;
+
+    public TextMeshProUGUI scoreTxt;
 
     [SerializeField] private TextMeshProUGUI highScoreTxt;
-    public float highScore;
+    public int highScore;
 
-    private float score;
-    public float Score 
+    private int score;
+    public int Score 
     { 
         get 
         { 
@@ -50,18 +53,21 @@ public class GameManager : Singleton<GameManager>
         }
     }
     public bool isGameOver;
+
+    private void Start()
+    {
+        isGameOver = true;
+        if(PlayerPrefs.HasKey("HighScore"))
+        {
+            highScore = PlayerPrefs.GetInt("HighScore");
+        }else  highScore = 0;
+    }
     private void FixedUpdate()
     {
         if (isGameOver == false)
         {
             TimeOver += Time.deltaTime;
         }
-    }
-
-
-    private void Start()
-    {
-        StartSET();
     }
 
     private int timeNum;
@@ -126,6 +132,7 @@ public class GameManager : Singleton<GameManager>
 
     public void NextBlock()
     {
+        SoundManager.Instance.PlaySound(ESoundSources.Hammer);
         Score += 50;
         TimeOver -= 1;
         SetTimeValue();
@@ -135,6 +142,8 @@ public class GameManager : Singleton<GameManager>
 
     public void StartSET()
     {
+        darumaObj.SetActive(true);
+
         isGameOver = false;
         Ingame.SetActive(true);
         gameOver.SetActive(false);
@@ -149,6 +158,9 @@ public class GameManager : Singleton<GameManager>
     }
     public void GameOver()
     {
+        SoundManager.Instance.PlaySound(ESoundSources.GameOver);
+
+        darumaObj.SetActive(false);
         isGameOver = true;
         eColors.Clear();
         Spawner.Instance.darumaObj.SetActive(false);
@@ -161,6 +173,7 @@ public class GameManager : Singleton<GameManager>
         if (score > highScore)
         {
             highScore = score;
+            PlayerPrefs.SetInt("HighScore", highScore);
         }
         highScoreTxt.text = highScore.ToString();
 

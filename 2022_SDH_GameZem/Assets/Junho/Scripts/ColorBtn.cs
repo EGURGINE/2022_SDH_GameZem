@@ -39,6 +39,8 @@ public class ColorBtn : MonoBehaviour
     }
     public void ColorsBtn()
     {
+        SoundManager.Instance.PlaySound(ESoundSources.Btn);
+
         GameManager.Instance.Checker(btnColor);
     }
 }
