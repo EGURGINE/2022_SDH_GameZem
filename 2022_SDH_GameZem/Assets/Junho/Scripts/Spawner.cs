@@ -56,12 +56,12 @@ public class Spawner : Singleton<Spawner>
     public void Push(Block _this)
     {
         _this.transform.parent = blocks.transform;
-        blockStack.Push(_this);
+        if(_this.isSingle) blockStack.Push(_this);
+        else doubleBlockStack.Push(_this);
         _this.gameObject.SetActive(false);
     }
     public void Pop(bool isSingle)
     {
-        print(isSingle);
         Block obj;
         if (isSingle)
         {
@@ -94,7 +94,7 @@ public class Spawner : Singleton<Spawner>
     public void Next()
     {
         if (blockList[0].isSingle) blockStack.Push(blockList[0]);
-        else blockStack.Push(blockList[1]);
+        else blockStack.Push(blockList[0]);
 
         blockList[0].transform.parent = blocks.transform;
         blockList[0].gameObject.SetActive(false);
