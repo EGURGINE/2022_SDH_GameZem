@@ -37,14 +37,14 @@ public class Spawner : Singleton<Spawner>
 
     private void CreateObj()
     {
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < 10; i++)
         {
             Block obj = Instantiate(blockObj[0],blocks.transform);
             obj.transform.position = Vector3.zero;
             blockStack.Push(obj);
             obj.gameObject.SetActive(false);
         }
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < 10; i++)
         {
             Block obj = Instantiate(blockObj[1], blocks.transform);
             obj.transform.position = Vector3.zero;
@@ -61,6 +61,7 @@ public class Spawner : Singleton<Spawner>
     }
     public void Pop(bool isSingle)
     {
+        print(isSingle);
         Block obj;
         if (isSingle)
         {

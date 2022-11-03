@@ -155,18 +155,18 @@ public class GameManager : Singleton<GameManager>
             int ranNUm = Random.Range(0, 6);
             if (ranNUm == 0)
             {
-                return true;
+                return false;
             }
-            else return false;
+            else return true;
         }
         else if (score > 2000)
         {
             int ranNUm = Random.Range(0, 11);
             if (ranNUm == 0)
             {
-                return true;
+                return false;
             }
-            else return false;
+            else return true;
         }
         else
         {
