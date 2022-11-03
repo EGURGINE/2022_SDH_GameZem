@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
-using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using TMPro;
 public enum Btntype
 {
@@ -11,6 +11,7 @@ public enum Btntype
     Back,
     Sound,
     Title,
+    VolumeON,
     GameEnd,
 }
 
@@ -18,9 +19,8 @@ public class Button : MonoBehaviour
 {
     [SerializeField] private GameObject fakeDarumaObj;
     public Btntype currentType;
-    public Transform SettingPanner;
     [SerializeField] private TextMeshProUGUI text;
-
+    public Sprite[] boolImage; 
     private void Start()
     {
         if (currentType == Btntype.Start)
@@ -41,11 +41,11 @@ public class Button : MonoBehaviour
             case Btntype.Setting:
                 Setting();
                 break;
-            case Btntype.Back:
-                Back();
-                break;
             case Btntype.Title:
                 GoTitle();
+                break;
+            case Btntype.VolumeON:
+                Volum();
                 break;
             case Btntype.GameEnd:
 #if UNITY_EDITOR
@@ -68,10 +68,25 @@ public class Button : MonoBehaviour
 
         });
     }
+
+    public void Volum() 
+    {
+        if (SoundManager.Instance.soundOn == false)
+        {
+            SoundManager.Instance.soundOn = true;
+            this.GetComponent<Image>().sprite = boolImage[0];
+            SoundManager.Instance.PlaySound(ESoundSources.Bgm);
+        }
+        else
+        {
+            SoundManager.Instance.soundOn = false;
+            this.GetComponent<Image>().sprite = boolImage[1];
+            Destroy(SoundManager.Instance.bgm);
+        }
+    }
     public void Setting()
     {
-        Vector3 pos = new Vector3(723, 1476, 0);
-        SettingPanner.DOMove(pos,1).SetEase(Ease.Unset);
+        GameManager.Instance.SettingWnd();
     }
     public void GoTitle()
     {
@@ -81,10 +96,5 @@ public class Button : MonoBehaviour
         GameManager.Instance.scoreTxt.gameObject.SetActive(false);
         Camera.main.transform.DOMove(new Vector3(0f, 7f, -7.5f), 1f);
         Camera.main.transform.DORotate(new Vector3(35f, 0f, 0f), 1f);
-    }
-    public void Back()
-    {
-        Vector3 pos = new Vector3(2717, 1476, 0);
-        SettingPanner.DOMove(pos, 1).SetEase(Ease.Unset);
     }
 }

@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public enum ESoundSources
 {
     Hammer,
@@ -12,6 +12,8 @@ public enum ESoundSources
 public class SoundManager : Singleton<SoundManager>
 {
     [SerializeField] private List<AudioClip> audioSources = new List<AudioClip>();
+    [SerializeField] private GameObject btn;
+
 
     public float soundVolum;
     public bool soundOn;
@@ -21,10 +23,19 @@ public class SoundManager : Singleton<SoundManager>
     {
         if (PlayerPrefs.HasKey("SoundOn"))
         {
-            if (PlayerPrefs.GetInt("SoundOn") == 0) soundOn = false;
-            else soundOn = true;
+            if (PlayerPrefs.GetInt("SoundOn") == 0)
+            {
+                soundOn = false;
+                btn.GetComponent<Image>().sprite = btn.GetComponent<Button>().boolImage[1];
+            }
+            else
+            {
+                soundOn = true;
+                btn.GetComponent<Image>().sprite = btn.GetComponent<Button>().boolImage[0];
+            }
         }
         else soundOn = true;
+
 
         PlaySound(ESoundSources.Bgm);
     }

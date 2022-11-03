@@ -10,6 +10,7 @@ public class Spawner : Singleton<Spawner>
     [SerializeField] private Block[] blockObj;
     [SerializeField] private GameObject blocks;
     private Stack<Block> blockStack = new Stack<Block>();
+    private Stack<Block> doubleBlockStack = new Stack<Block>();
     public List<Block> blockList = new List<Block>();
 
     [SerializeField] private GameObject hammer;
@@ -29,21 +30,27 @@ public class Spawner : Singleton<Spawner>
         darumaObj.SetActive(true);
         for (int i = 0; i < 4; i++)
         {
-            Pop();
+            Pop(true);
         }
     }
 
 
     private void CreateObj()
     {
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 4; i++)
         {
-            Block obj = Instantiate(blockObj[Random.Range(0,2)],blocks.transform);
+            Block obj = Instantiate(blockObj[0],blocks.transform);
             obj.transform.position = Vector3.zero;
             blockStack.Push(obj);
             obj.gameObject.SetActive(false);
         }
-
+        for (int i = 0; i < 4; i++)
+        {
+            Block obj = Instantiate(blockObj[1], blocks.transform);
+            obj.transform.position = Vector3.zero;
+            doubleBlockStack.Push(obj);
+            obj.gameObject.SetActive(false);
+        }
     }
 
     public void Push(Block _this)
@@ -52,10 +59,14 @@ public class Spawner : Singleton<Spawner>
         blockStack.Push(_this);
         _this.gameObject.SetActive(false);
     }
-    public void Pop()
+    public void Pop(bool isSingle)
     {
-
-        Block obj = blockStack.Pop();
+        Block obj;
+        if (isSingle)
+        {
+            obj = blockStack.Pop();
+        }
+        else obj = doubleBlockStack.Pop();
         blockList.Add(obj);
         obj.transform.DORestart();
         obj.transform.parent = null;
@@ -81,7 +92,9 @@ public class Spawner : Singleton<Spawner>
     }
     public void Next()
     {
-        blockStack.Push(blockList[0]);
+        if (blockList[0].isSingle) blockStack.Push(blockList[0]);
+        else blockStack.Push(blockList[1]);
+
         blockList[0].transform.parent = blocks.transform;
         blockList[0].gameObject.SetActive(false);
 
@@ -90,7 +103,7 @@ public class Spawner : Singleton<Spawner>
             if (i == 3)
             {
                 blockList.Remove(blockList[i]);
-                Pop();
+                Pop(GameManager.Instance.LevelDesign());
                 break;
             }else
             blockList[i] = blockList[i + 1];

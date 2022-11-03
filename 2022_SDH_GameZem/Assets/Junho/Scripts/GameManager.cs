@@ -9,6 +9,8 @@ public class GameManager : Singleton<GameManager>
 {
     public GameObject TitleObj;
     [SerializeField] private GameObject Ingame;
+    public GameObject settingWnd;
+
     public GameObject gameOver;
 
     [SerializeField] private GameObject darumaObj;
@@ -129,19 +131,46 @@ public class GameManager : Singleton<GameManager>
         }
 
     }
-    private void LevelDesign() 
+    private bool isSetting;
+    public void SettingWnd()
     {
-        if (score > 2000)
+        if (isSetting == false)
         {
-            //두개 확률 업
-        }
-        else if (score > 2000)
-        {
-            //가끔 두개
+            Time.timeScale = 0;
+            isSetting = true;
+            settingWnd.SetActive(true);
         }
         else
         {
-            //단색
+            Time.timeScale = 1;
+            isSetting = false;
+            settingWnd.SetActive(false);
+        }
+    }
+
+    public bool LevelDesign() 
+    {
+        if (score > 4000)
+        {
+            int ranNUm = Random.Range(0, 6);
+            if (ranNUm == 0)
+            {
+                return true;
+            }
+            else return false;
+        }
+        else if (score > 2000)
+        {
+            int ranNUm = Random.Range(0, 11);
+            if (ranNUm == 0)
+            {
+                return true;
+            }
+            else return false;
+        }
+        else
+        {
+            return true;
         }
     }
     public void NextBlock()
