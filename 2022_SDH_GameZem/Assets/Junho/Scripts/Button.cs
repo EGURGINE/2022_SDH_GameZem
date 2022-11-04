@@ -90,6 +90,7 @@ public class Button : MonoBehaviour
     }
     public void GoTitle()
     {
+        GameManager.Instance.Score = 0;
         fakeDarumaObj.SetActive(true);
         GameManager.Instance.gameOver.gameObject.SetActive(false);
         GameManager.Instance.TitleObj.SetActive(true);

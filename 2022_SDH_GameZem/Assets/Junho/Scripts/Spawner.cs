@@ -40,7 +40,7 @@ public class Spawner : Singleton<Spawner>
     {
         for (int i = 0; i < 10; i++)
         {
-            Block obj = Instantiate(blockObj[0],blocks.transform);
+            Block obj = Instantiate(blockObj[0], blocks.transform);
             obj.transform.position = Vector3.zero;
             blockStack.Push(obj);
             obj.gameObject.SetActive(false);
@@ -56,18 +56,24 @@ public class Spawner : Singleton<Spawner>
 
     public void Push(Block _this)
     {
+        print("push");
         _this.transform.parent = blocks.transform;
-        if(_this.isSingle) blockStack.Push(_this);
-        else doubleBlockStack.Push(_this);
+        if (_this.isSingle)
+        {
+            print("blockStack");
+            blockStack.Push(_this);
+        }
+        else
+        {
+            print("doubleBlockStack");
+            doubleBlockStack.Push(_this);
+        }
         _this.gameObject.SetActive(false);
     }
     public void Pop(bool isSingle)
     {
         Block obj;
-        if (isSingle)
-        {
-            obj = blockStack.Pop();
-        }
+        if (isSingle) obj = blockStack.Pop();
         else obj = doubleBlockStack.Pop();
         blockList.Add(obj);
         obj.transform.DORestart();
@@ -76,13 +82,16 @@ public class Spawner : Singleton<Spawner>
         EColor ranColor = (EColor)Random.Range(0, 4);
         obj.SwitchColor(ranColor);
         obj.gameObject.SetActive(true);
-        obj.transform.rotation = Quaternion.Euler(0,Random.Range(-15f,16f),0);
+        obj.transform.rotation = Quaternion.Euler(0, Random.Range(-15f, 16f), 0);
         foreach (var item in blockList)
         {
             item.transform.position = new Vector2(0, posY * 0.6f);
             posY++;
         }
-        Camera.main.transform.DOShakePosition(1,0.1f); 
+        Camera.main.transform.DOShakePosition(1, 0.1f).OnComplete(() =>
+        {
+            Camera.main.transform.DOLocalMove(new Vector3(0, 4.5f, -7.5f), 0.1f);
+        });
         hammer.transform.DORotate(new Vector3(0, 85 * isRight, 0), 0.1f);
 
         if (isRight > 0)
@@ -94,8 +103,8 @@ public class Spawner : Singleton<Spawner>
     }
     public void Next()
     {
-        if (blockList[0].isSingle) blockStack.Push(blockList[0]);
-        else blockStack.Push(blockList[0]);
+        if (blockList[0].isSingle) Push(blockList[0]);
+        else Push(blockList[0]);
 
         blockList[0].transform.parent = blocks.transform;
         blockList[0].gameObject.SetActive(false);
@@ -107,8 +116,9 @@ public class Spawner : Singleton<Spawner>
                 blockList.Remove(blockList[i]);
                 Pop(GameManager.Instance.LevelDesign());
                 break;
-            }else
-            blockList[i] = blockList[i + 1];
+            }
+            else
+                blockList[i] = blockList[i + 1];
         }
 
         // ¿Ãµø 
