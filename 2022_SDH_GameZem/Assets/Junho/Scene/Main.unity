@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44402242, g: 0.49316543, b: 0.5722324, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -742,7 +742,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: -340}
-  m_SizeDelta: {x: 1000, y: 200}
+  m_SizeDelta: {x: 1242.1, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &315908769
 MonoBehaviour:
@@ -775,7 +775,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4279767970
-  m_fontColor: {r: 0.63529414, g: 0.07450981, b: 0.09411766, a: 1}
+  m_fontColor: {r: 0.9921569, g: 0.9450981, b: 0.8941177, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -798,7 +798,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -885,7 +885,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: -1117.4}
-  m_SizeDelta: {x: 1000, y: 200}
+  m_SizeDelta: {x: 3904.4, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &409137247
 MonoBehaviour:
@@ -907,7 +907,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: SCORE
+  m_text: HIGH SCORE
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 79489fabbeee44541b0e9aa2c7b5e6db, type: 2}
   m_sharedMaterial: {fileID: 5790136131600698152, guid: 79489fabbeee44541b0e9aa2c7b5e6db,
@@ -918,7 +918,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4279570850
-  m_fontColor: {r: 0.63529414, g: 0.06666667, b: 0.08235294, a: 1}
+  m_fontColor: {r: 0.9921569, g: 0.9450981, b: 0.8941177, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -941,7 +941,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -1547,7 +1547,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -900}
-  m_SizeDelta: {x: 1000, y: 200}
+  m_SizeDelta: {x: 1716.8, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &554213001
 MonoBehaviour:
@@ -1603,7 +1603,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -4124,6 +4124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40f615d10c0912e40917028fc1908a17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  particle: {fileID: 763562319253994740, guid: be843031f318c154d9f031a579100a9d, type: 3}
   TitleObj: {fileID: 312705388}
   Ingame: {fileID: 1750714544}
   settingWnd: {fileID: 1114399297}

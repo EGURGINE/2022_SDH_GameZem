@@ -7,6 +7,8 @@ using DG.Tweening;
 
 public class GameManager : Singleton<GameManager>
 {
+    [SerializeField] ParticleSystem particle;
+
     public GameObject TitleObj;
     [SerializeField] private GameObject Ingame;
     public GameObject settingWnd;
@@ -112,6 +114,9 @@ public class GameManager : Singleton<GameManager>
                     check = false;
                     eColors.Clear();
                     NextBlock();
+                    ParticleSystem pc = Instantiate(particle);
+                    pc.transform.position = Vector3.zero;
+                    pc.Play();
                 }
                 else GameOver();
             }
@@ -122,7 +127,9 @@ public class GameManager : Singleton<GameManager>
             if (Spawner.Instance.blockList[0].isColor[0] == _color)
             {
                 NextBlock();
-
+                ParticleSystem pc = Instantiate(particle);
+                pc.transform.position = Vector3.zero;
+                pc.Play();
             }
             else
             {
@@ -189,12 +196,13 @@ public class GameManager : Singleton<GameManager>
 
         isGameOver = false;
         Ingame.SetActive(true);
-        gameOver.SetActive(false);
-
+        score = 0;
+        Score = 0;
         timeNum = 0;
         maxTime = 3f;
-        Score = 0;
         TimeOver = 0;
+        gameOver.SetActive(false);
+
 
         Spawner.Instance.blockList.Clear();
         Spawner.Instance.StartGame();
@@ -202,6 +210,7 @@ public class GameManager : Singleton<GameManager>
     public void GameOver()
     {
         SoundManager.Instance.PlaySound(ESoundSources.GameOver);
+
 
         darumaObj.SetActive(false);
         isGameOver = true;
@@ -225,5 +234,6 @@ public class GameManager : Singleton<GameManager>
         // ø¨√‚
         gameOver.transform.position = new Vector3(0, 3.8f, -5.9f);
         gameOver.transform.DOLocalMove(Vector3.zero, 0.5f).SetEase(Ease.Linear);
+        score = 0;
     }
 }
