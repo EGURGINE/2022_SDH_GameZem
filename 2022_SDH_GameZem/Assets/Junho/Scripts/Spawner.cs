@@ -56,16 +56,13 @@ public class Spawner : Singleton<Spawner>
 
     public void Push(Block _this)
     {
-        print("push");
         _this.transform.parent = blocks.transform;
         if (_this.isSingle)
         {
-            print("blockStack");
             blockStack.Push(_this);
         }
         else
         {
-            print("doubleBlockStack");
             doubleBlockStack.Push(_this);
         }
         _this.gameObject.SetActive(false);

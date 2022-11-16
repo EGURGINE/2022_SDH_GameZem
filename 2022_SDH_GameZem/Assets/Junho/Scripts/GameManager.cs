@@ -160,7 +160,6 @@ public class GameManager : Singleton<GameManager>
         if (score > 4000)
         {
             int ranNUm = Random.Range(0, 3);
-            print(score +"1");
             if (ranNUm == 0)
             {
                 return false;
@@ -169,7 +168,6 @@ public class GameManager : Singleton<GameManager>
         }
         else if (score > 2000)
         {
-            print(score + "2");
             int ranNUm = Random.Range(0, 8);
             if (ranNUm == 0)
             {
@@ -179,7 +177,6 @@ public class GameManager : Singleton<GameManager>
         }
         else
         {
-            print(score + "3");
             return true;
         }
     }
