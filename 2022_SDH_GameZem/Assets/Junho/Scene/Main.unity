@@ -167,7 +167,6 @@ GameObject:
   - component: {fileID: 38442413}
   - component: {fileID: 38442412}
   - component: {fileID: 38442411}
-  - component: {fileID: 38442414}
   m_Layer: 5
   m_Name: YellowBtn
   m_TagString: Untagged
@@ -239,14 +238,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 38442414}
-        m_TargetAssemblyTypeName: ColorBtn, Assembly-CSharp
+      - m_Target: {fileID: 1739684098}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: ColorsBtn
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -289,19 +288,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 38442409}
   m_CullTransparentMesh: 1
---- !u!114 &38442414
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 38442409}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ddedb04fa28b5b1489cbf40a7576bf77, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  btnColor: 2
 --- !u!1 &45372641
 GameObject:
   m_ObjectHideFlags: 0
@@ -425,7 +411,7 @@ GameObject:
   - component: {fileID: 156077156}
   - component: {fileID: 156077155}
   m_Layer: 5
-  m_Name: Image
+  m_Name: DarumaLogo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -684,7 +670,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 312705389}
-  - component: {fileID: 312705390}
   m_Layer: 5
   m_Name: Title
   m_TagString: Untagged
@@ -716,22 +701,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1080, y: 1920}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &312705390
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 312705388}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6577b2913272ab04086080bc4381ff0c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fakeDarumaObj: {fileID: 669767862}
-  currentType: 0
-  text: {fileID: 554213001}
-  boolImage: []
 --- !u!1 &315908767
 GameObject:
   m_ObjectHideFlags: 0
@@ -1394,7 +1363,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1448161927}
+  - {fileID: 1577624438}
   - {fileID: 863877031}
   m_Father: {fileID: 1114399298}
   m_RootOrder: 1
@@ -1528,7 +1497,7 @@ GameObject:
   - component: {fileID: 554213002}
   - component: {fileID: 554213001}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: StartTxt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1665,7 +1634,7 @@ GameObject:
   - component: {fileID: 573019534}
   - component: {fileID: 573019533}
   m_Layer: 5
-  m_Name: Button
+  m_Name: StartButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1735,9 +1704,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 312705390}
+      - m_Target: {fileID: 1739684101}
         m_TargetAssemblyTypeName: Button, Assembly-CSharp
-        m_MethodName: Title
+        m_MethodName: StartGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1871,7 +1840,6 @@ GameObject:
   - component: {fileID: 664897685}
   - component: {fileID: 664897684}
   - component: {fileID: 664897683}
-  - component: {fileID: 664897686}
   m_Layer: 5
   m_Name: GreenBtn
   m_TagString: Untagged
@@ -1943,14 +1911,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 664897686}
-        m_TargetAssemblyTypeName: ColorBtn, Assembly-CSharp
+      - m_Target: {fileID: 1739684098}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: ColorsBtn
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -1993,19 +1961,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 664897681}
   m_CullTransparentMesh: 1
---- !u!114 &664897686
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 664897681}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ddedb04fa28b5b1489cbf40a7576bf77, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  btnColor: 3
 --- !u!1 &669767862
 GameObject:
   m_ObjectHideFlags: 0
@@ -2139,6 +2094,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
   m_HorizontalAxis: Horizontal
   m_VerticalAxis: Vertical
   m_SubmitButton: Submit
@@ -2425,7 +2381,6 @@ GameObject:
   - component: {fileID: 863877034}
   - component: {fileID: 863877033}
   - component: {fileID: 863877032}
-  - component: {fileID: 863877035}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -2497,9 +2452,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 863877035}
+      - m_Target: {fileID: 1739684101}
         m_TargetAssemblyTypeName: Button, Assembly-CSharp
-        m_MethodName: Title
+        m_MethodName: Volum
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2547,24 +2502,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 863877030}
   m_CullTransparentMesh: 1
---- !u!114 &863877035
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 863877030}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6577b2913272ab04086080bc4381ff0c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fakeDarumaObj: {fileID: 0}
-  currentType: 5
-  text: {fileID: 0}
-  boolImage:
-  - {fileID: 21300000, guid: 679bdf368871b52438953f8d64a83b3f, type: 3}
-  - {fileID: 21300000, guid: de171ac48c76ad74c93ee13e2576721c, type: 3}
 --- !u!1 &914812421
 GameObject:
   m_ObjectHideFlags: 0
@@ -2771,7 +2708,6 @@ GameObject:
   - component: {fileID: 1012036811}
   - component: {fileID: 1012036810}
   - component: {fileID: 1012036809}
-  - component: {fileID: 1012036812}
   m_Layer: 5
   m_Name: SetBtn
   m_TagString: Untagged
@@ -2843,9 +2779,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1012036812}
-        m_TargetAssemblyTypeName: Button, Assembly-CSharp
-        m_MethodName: Title
+      - m_Target: {fileID: 1739684101}
+        m_TargetAssemblyTypeName: ButtonManager, Assembly-CSharp
+        m_MethodName: Setting
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2893,22 +2829,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1012036807}
   m_CullTransparentMesh: 1
---- !u!114 &1012036812
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1012036807}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6577b2913272ab04086080bc4381ff0c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fakeDarumaObj: {fileID: 0}
-  currentType: 1
-  text: {fileID: 0}
-  boolImage: []
 --- !u!1 &1056485994
 GameObject:
   m_ObjectHideFlags: 0
@@ -3345,7 +3265,6 @@ GameObject:
   - component: {fileID: 1379403798}
   - component: {fileID: 1379403797}
   - component: {fileID: 1379403796}
-  - component: {fileID: 1379403799}
   m_Layer: 5
   m_Name: RedBtn
   m_TagString: Untagged
@@ -3417,10 +3336,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1379403799}
-        m_TargetAssemblyTypeName: ColorBtn, Assembly-CSharp
+      - m_Target: {fileID: 1739684098}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: ColorsBtn
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3467,19 +3386,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1379403794}
   m_CullTransparentMesh: 1
---- !u!114 &1379403799
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1379403794}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ddedb04fa28b5b1489cbf40a7576bf77, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  btnColor: 0
 --- !u!1 &1384326241 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -1014268425052216762, guid: 3239de1eab7d6cf4685e416e948183f3,
@@ -3580,82 +3486,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 8004032832115202289}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1448161926
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1448161927}
-  - component: {fileID: 1448161929}
-  - component: {fileID: 1448161928}
-  m_Layer: 5
-  m_Name: Image
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1448161927
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1448161926}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 486182806}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 534.9, y: 0}
-  m_SizeDelta: {x: 128, y: 128}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1448161928
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1448161926}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: de171ac48c76ad74c93ee13e2576721c, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &1448161929
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1448161926}
-  m_CullTransparentMesh: 1
 --- !u!1 &1478476593
 GameObject:
   m_ObjectHideFlags: 0
@@ -3668,7 +3498,6 @@ GameObject:
   - component: {fileID: 1478476597}
   - component: {fileID: 1478476596}
   - component: {fileID: 1478476595}
-  - component: {fileID: 1478476598}
   m_Layer: 5
   m_Name: OrangeBtn
   m_TagString: Untagged
@@ -3740,14 +3569,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1478476598}
-        m_TargetAssemblyTypeName: ColorBtn, Assembly-CSharp
+      - m_Target: {fileID: 1739684098}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: ColorsBtn
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -3790,19 +3619,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1478476593}
   m_CullTransparentMesh: 1
---- !u!114 &1478476598
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1478476593}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ddedb04fa28b5b1489cbf40a7576bf77, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  btnColor: 1
 --- !u!1 &1571771234 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8487167654232718067, guid: 3239de1eab7d6cf4685e416e948183f3,
@@ -3897,6 +3713,82 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c31a7ec4ad3c4724fa9228ace3e3c45c, type: 3}
+--- !u!1 &1577624437
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1577624438}
+  - component: {fileID: 1577624440}
+  - component: {fileID: 1577624439}
+  m_Layer: 5
+  m_Name: bg
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1577624438
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1577624437}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 486182806}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 534.9, y: 0}
+  m_SizeDelta: {x: 128, y: 128}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1577624439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1577624437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: de171ac48c76ad74c93ee13e2576721c, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1577624440
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1577624437}
+  m_CullTransparentMesh: 1
 --- !u!1 &1586950352
 GameObject:
   m_ObjectHideFlags: 0
@@ -3981,9 +3873,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1586950357}
-        m_TargetAssemblyTypeName: Button, Assembly-CSharp
-        m_MethodName: Title
+      - m_Target: {fileID: 1739684101}
+        m_TargetAssemblyTypeName: ButtonManager, Assembly-CSharp
+        m_MethodName: GoTitle
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4044,9 +3936,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fakeDarumaObj: {fileID: 669767862}
-  currentType: 4
   text: {fileID: 554213001}
   boolImage: []
+  boolImageObj: {fileID: 0}
 --- !u!1001 &1601539032
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4423,6 +4315,7 @@ GameObject:
   - component: {fileID: 1739684099}
   - component: {fileID: 1739684098}
   - component: {fileID: 1739684100}
+  - component: {fileID: 1739684101}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -4449,6 +4342,7 @@ MonoBehaviour:
   settingWnd: {fileID: 1114399297}
   gameOver: {fileID: 914812421}
   darumaObj: {fileID: 2030325514}
+  buttonManager: {fileID: 1739684101}
   scoreTxt: {fileID: 1056485997}
   highScoreTxt: {fileID: 315908769}
   highScore: 0
@@ -4488,10 +4382,28 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 8e2dd765f2d6ddd45ae53cc4bd29cd5a, type: 3}
   - {fileID: 8300000, guid: 9a1814af8c7ec094289f477d23f18a3d, type: 3}
   - {fileID: 8300000, guid: 8821e0d0477843742867aa41e225ea43, type: 3}
-  btn: {fileID: 863877030}
+  btn: {fileID: 863877033}
   soundVolum: 0
   soundOn: 0
   bgm: {fileID: 0}
+--- !u!114 &1739684101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1739684097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6577b2913272ab04086080bc4381ff0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fakeDarumaObj: {fileID: 669767862}
+  text: {fileID: 554213001}
+  boolImage:
+  - {fileID: 21300000, guid: 679bdf368871b52438953f8d64a83b3f, type: 3}
+  - {fileID: 21300000, guid: de171ac48c76ad74c93ee13e2576721c, type: 3}
+  boolImageObj: {fileID: 863877033}
 --- !u!1 &1750714544
 GameObject:
   m_ObjectHideFlags: 0
@@ -4844,7 +4756,7 @@ GameObject:
   - component: {fileID: 1952499549}
   - component: {fileID: 1952499548}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: TitleTxt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -17,6 +17,8 @@ public class GameManager : Singleton<GameManager>
 
     [SerializeField] private GameObject darumaObj;
 
+    public ButtonManager buttonManager;
+
     public TextMeshProUGUI scoreTxt;
 
     [SerializeField] private TextMeshProUGUI highScoreTxt;
@@ -91,9 +93,15 @@ public class GameManager : Singleton<GameManager>
 
     private bool check;
 
+    public void ColorsBtn(int InputColor)
+    {
+        SoundManager.Instance.PlaySound(ESoundSources.Btn);
+
+        Checker((EColor)InputColor);
+    }
     public void Checker(EColor _color)
     {
-        if (Spawner.Instance.blockList[0].isColor.Length == 2)
+        if (Spawner.Instance.blockList[0].isSingle == false)
         {
             eColors.Add(_color);
 
@@ -127,8 +135,7 @@ public class GameManager : Singleton<GameManager>
             if (Spawner.Instance.blockList[0].isColor[0] == _color)
             {
                 NextBlock();
-                ParticleSystem pc = Instantiate(particle);
-                pc.transform.position = Vector3.zero;
+                ParticleSystem pc = Instantiate(particle,Vector3.zero, Quaternion.Euler(Vector3.zero));
                 pc.Play();
             }
             else

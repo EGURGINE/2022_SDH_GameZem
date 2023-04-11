@@ -12,7 +12,7 @@ public enum ESoundSources
 public class SoundManager : Singleton<SoundManager>
 {
     [SerializeField] private List<AudioClip> audioSources = new List<AudioClip>();
-    [SerializeField] private GameObject btn;
+    [SerializeField] private Image btn;
 
 
     public float soundVolum;
@@ -26,12 +26,12 @@ public class SoundManager : Singleton<SoundManager>
             if (PlayerPrefs.GetInt("SoundOn") == 0)
             {
                 soundOn = false;
-                btn.GetComponent<Image>().sprite = btn.GetComponent<Button>().boolImage[1];
+                btn.sprite = GameManager.Instance.buttonManager.boolImage[1];
             }
             else
             {
                 soundOn = true;
-                btn.GetComponent<Image>().sprite = btn.GetComponent<Button>().boolImage[0];
+                btn.sprite = GameManager.Instance.buttonManager.boolImage[0];
             }
         }
         else soundOn = true;

@@ -4,57 +4,15 @@ using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI;
 using TMPro;
-public enum Btntype
-{
-    Start,
-    Setting,
-    Back,
-    Sound,
-    Title,
-    VolumeON,
-    GameEnd,
-}
-
-public class Button : MonoBehaviour
+public class ButtonManager : MonoBehaviour
 {
     [SerializeField] private GameObject fakeDarumaObj;
-    public Btntype currentType;
     [SerializeField] private TextMeshProUGUI text;
     public Sprite[] boolImage; 
+    [SerializeField] private Image boolImageObj; 
     private void Start()
     {
-        if (currentType == Btntype.Start)
-        {
-
         text.DOFade(0, 1f).SetLoops(-1, LoopType.Yoyo);
-        }
-    }
-    public void Title()
-    {
-        SoundManager.Instance.PlaySound(ESoundSources.Btn);
-
-        switch (currentType)
-        {
-            case Btntype.Start:
-                StartGame();
-                break;
-            case Btntype.Setting:
-                Setting();
-                break;
-            case Btntype.Title:
-                GoTitle();
-                break;
-            case Btntype.VolumeON:
-                Volum();
-                break;
-            case Btntype.GameEnd:
-#if UNITY_EDITOR
-                UnityEditor.EditorApplication.isPlaying = false;
-#else
-        Application.Quit();
-#endif
-                break;
-        }
     }
     public void StartGame()
     {
@@ -65,7 +23,6 @@ public class Button : MonoBehaviour
         Camera.main.transform.DORotate(new Vector3(20f, 0f, 0f), 1f).OnComplete(() =>
         {
             GameManager.Instance.StartSET();
-
         });
     }
 
@@ -74,13 +31,13 @@ public class Button : MonoBehaviour
         if (SoundManager.Instance.soundOn == false)
         {
             SoundManager.Instance.soundOn = true;
-            this.GetComponent<Image>().sprite = boolImage[0];
+            boolImageObj.sprite = boolImage[0];
             SoundManager.Instance.PlaySound(ESoundSources.Bgm);
         }
         else
         {
             SoundManager.Instance.soundOn = false;
-            this.GetComponent<Image>().sprite = boolImage[1];
+            boolImageObj.sprite = boolImage[1];
             Destroy(SoundManager.Instance.bgm);
         }
     }
