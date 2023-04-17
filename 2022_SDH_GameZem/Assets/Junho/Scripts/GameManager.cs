@@ -17,6 +17,8 @@ public class GameManager : Singleton<GameManager>
 
     [SerializeField] private GameObject darumaObj;
 
+    public ButtonManager buttonManager;
+
     public TextMeshProUGUI scoreTxt;
 
     [SerializeField] private TextMeshProUGUI highScoreTxt;
@@ -91,16 +93,22 @@ public class GameManager : Singleton<GameManager>
 
     private bool check;
 
+    public void ColorsBtn(int InputColor)
+    {
+        SoundManager.Instance.PlaySound(ESoundSources.Btn);
+
+        Checker((EColor)InputColor);
+    }
     public void Checker(EColor _color)
     {
-        if (Spawner.Instance.blockList[0].isColor.Length == 2)
+        if (Spawner.Instance.blockList[0].isSingle == false)
         {
             eColors.Add(_color);
 
             if (eColors.Count == 2)
             {
 
-                foreach (var item in Spawner.Instance.blockList[0].isColor)
+                foreach (var color in Spawner.Instance.blockList[0].isColor)
                 {
                     if (Spawner.Instance.blockList[0].isColor[0] == eColors[0] 
                         && Spawner.Instance.blockList[0].isColor[1] == eColors[1]
@@ -114,9 +122,8 @@ public class GameManager : Singleton<GameManager>
                     check = false;
                     eColors.Clear();
                     NextBlock();
-                    ParticleSystem pc = Instantiate(particle);
-                    pc.transform.position = Vector3.zero;
-                    pc.Play();
+                    
+                    particle.Play();
                 }
                 else GameOver();
             }
@@ -127,9 +134,7 @@ public class GameManager : Singleton<GameManager>
             if (Spawner.Instance.blockList[0].isColor[0] == _color)
             {
                 NextBlock();
-                ParticleSystem pc = Instantiate(particle);
-                pc.transform.position = Vector3.zero;
-                pc.Play();
+                particle.Play();
             }
             else
             {
