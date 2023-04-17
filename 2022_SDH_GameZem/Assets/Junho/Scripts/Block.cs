@@ -20,11 +20,13 @@ public class Block : MonoBehaviour
     {
         if (isSingle)
         {
+            // 한개 블럭일때 색 바꾸기
             this.GetComponent <MeshRenderer>().material = colorsM[((int)color)];
             isColor[0] = color;
         }
         else
         {
+            // 두개 블럭일때 색 바꾸기
             for (int i = 0; i < 4; i++)
             {
                 eColors.Add((EColor)i);
