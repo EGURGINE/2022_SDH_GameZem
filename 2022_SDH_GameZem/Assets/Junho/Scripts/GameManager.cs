@@ -81,7 +81,7 @@ public class GameManager : Singleton<GameManager>
         {
             TimeOver += Time.deltaTime;
 
-            float value = (isFeverTime == true) ? 10 : 1;
+            float value = (isFeverTime == true) ? 20 : 1;
             FeverValueSET(-Time.deltaTime * value);
         }
     }
