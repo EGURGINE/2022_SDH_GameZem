@@ -38,6 +38,13 @@ public class GameManager : Singleton<GameManager>
         }
     }
 
+    [SerializeField] Slider feverSlider;
+    [SerializeField] private float maxFever;
+    private float curFever;
+    private bool isFeverTime;
+    [SerializeField] private ParticleSystem FeverPc;
+
+
     [SerializeField] Slider timeOverSlider;
 
     [SerializeField] private float maxTime;
@@ -73,6 +80,33 @@ public class GameManager : Singleton<GameManager>
         if (isGameOver == false)
         {
             TimeOver += Time.deltaTime;
+
+            float value = (isFeverTime == true) ? 10 : 1;
+            FeverValueSET(-Time.deltaTime * value);
+        }
+    }
+    private void Update()
+    {
+        InputKey();
+    }
+
+    private void InputKey()
+    {
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            Checker(EColor.RED);
+        }
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            Checker(EColor.ORANGE);
+        }
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            Checker(EColor.YELLOW);
+        }
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            Checker(EColor.GREEN);
         }
     }
 
@@ -101,47 +135,54 @@ public class GameManager : Singleton<GameManager>
     }
     public void Checker(EColor _color)
     {
-        if (Spawner.Instance.blockList[0].isSingle == false)
+        if(isFeverTime == true)
         {
-            eColors.Add(_color);
-
-            if (eColors.Count == 2)
-            {
-
-                foreach (var color in Spawner.Instance.blockList[0].isColor)
-                {
-                    if (Spawner.Instance.blockList[0].isColor[0] == eColors[0] 
-                        && Spawner.Instance.blockList[0].isColor[1] == eColors[1]
-                        || Spawner.Instance.blockList[0].isColor[0] == eColors[1]
-                        && Spawner.Instance.blockList[0].isColor[1] == eColors[0]
-                        ) check = true;
-
-                }
-                if (check == true)
-                {
-                    check = false;
-                    eColors.Clear();
-                    NextBlock();
-                    
-                    particle.Play();
-                }
-                else GameOver();
-            }
+            NextBlock();
+            particle.Play();
         }
         else
         {
-
-            if (Spawner.Instance.blockList[0].isColor[0] == _color)
+            if (Spawner.Instance.blockList[0].isSingle == false)
             {
-                NextBlock();
-                particle.Play();
+                eColors.Add(_color);
+
+                if (eColors.Count == 2)
+                {
+
+                    foreach (var color in Spawner.Instance.blockList[0].isColor)
+                    {
+                        if (Spawner.Instance.blockList[0].isColor[0] == eColors[0]
+                            && Spawner.Instance.blockList[0].isColor[1] == eColors[1]
+                            || Spawner.Instance.blockList[0].isColor[0] == eColors[1]
+                            && Spawner.Instance.blockList[0].isColor[1] == eColors[0]
+                            ) check = true;
+
+                    }
+                    if (check == true)
+                    {
+                        check = false;
+                        eColors.Clear();
+                        NextBlock();
+
+                        particle.Play();
+                    }
+                    else GameOver();
+                }
             }
             else
             {
-                GameOver();
+
+                if (Spawner.Instance.blockList[0].isColor[0] == _color)
+                {
+                    NextBlock();
+                    particle.Play();
+                }
+                else
+                {
+                    GameOver();
+                }
             }
         }
-
     }
     private bool isSetting;
     public void SettingWnd()
@@ -192,9 +233,40 @@ public class GameManager : Singleton<GameManager>
         TimeOver -= 1;
         SetTimeValue();
         Spawner.Instance.Next();
+
+        if(isFeverTime == false)
+        FeverValueSET(5);
     }
 
+    private void FeverTime()
+    {
+        curFever = maxFever;
 
+        isFeverTime = true;
+
+        FeverPc.Play();
+    }
+    private void FeverValueSET(float value)
+    {
+        curFever += value;
+
+        // Fever
+        if (curFever >= maxFever) FeverTime();
+
+
+        if (curFever <= 0)
+        {
+            if (isFeverTime == true)
+            {
+                isFeverTime = false;
+                FeverPc.Stop();
+            }
+            curFever = 0;
+        }
+
+        feverSlider.value = curFever / maxFever;
+
+    }
     public void StartSET()
     {
         darumaObj.SetActive(true);

@@ -91,7 +91,11 @@ public class Spawner : Singleton<Spawner>
 
         Camera.main.transform.DOShakePosition(1, 0.1f);
         // ¸ÁÄ¡ ÈÖµÎ¸£±â
-        hammer.transform.DORotate(new Vector3(0, 85 * isRight, 0), 0.1f);
+        hammer.transform.DORotate(new Vector3(0, 85 * isRight, 0), 0.1f).OnComplete(() =>
+        {
+            int rotZ = (isRight == 1) ? 180 : 0;
+            hammer.transform.rotation = Quaternion.Euler(hammer.transform.rotation.eulerAngles + new Vector3(0, 0, rotZ));
+        });
 
         if (isRight > 0)
         {
