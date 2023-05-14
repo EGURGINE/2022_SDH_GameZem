@@ -103,8 +103,11 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 531ae702d491cb44a9392a37a2b20f32, type: 2}
   - {fileID: 2100000, guid: a2b6d331a07697443a8dc3f407e3d4a4, type: 2}
   - {fileID: 2100000, guid: 89a1ee97b2a7dca4b816f9d6b3290e57, type: 2}
+  - {fileID: 2100000, guid: 11b5c2f4dc0a3464baddd6925e201280, type: 2}
   isSingle: 1
   isColor: 00000000
+  myMaterials:
+  - {fileID: 149721095941720432}
 --- !u!54 &3379515729381571903
 Rigidbody:
   m_ObjectHideFlags: 0

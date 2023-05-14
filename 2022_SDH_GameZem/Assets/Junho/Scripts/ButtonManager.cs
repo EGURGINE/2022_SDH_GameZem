@@ -19,11 +19,8 @@ public class ButtonManager : MonoBehaviour
         GameManager.Instance.TitleObj.SetActive(false);
         GameManager.Instance.scoreTxt.gameObject.SetActive(true);
         fakeDarumaObj.SetActive(false);
-        Camera.main.transform.DOMove(new Vector3(0f ,4.5f,-7.5f), 1f);
-        Camera.main.transform.DORotate(new Vector3(20f, 0f, 0f), 1f).OnComplete(() =>
-        {
-            GameManager.Instance.StartSET();
-        });
+
+        CameraSetting.Instance.IngameMove();
     }
 
     public void Volum() 
@@ -52,7 +49,7 @@ public class ButtonManager : MonoBehaviour
         GameManager.Instance.gameOver.gameObject.SetActive(false);
         GameManager.Instance.TitleObj.SetActive(true);
         GameManager.Instance.scoreTxt.gameObject.SetActive(false);
-        Camera.main.transform.DOMove(new Vector3(0f, 7f, -7.5f), 1f);
-        Camera.main.transform.DORotate(new Vector3(35f, 0f, 0f), 1f);
+        
+        CameraSetting.Instance.TitleMove();
     }
 }

@@ -72,6 +72,7 @@ public class Spawner : Singleton<Spawner>
         if (isSingle) obj = blockStack.Pop();
         else obj = doubleBlockStack.Pop();
 
+        GameManager.Instance.ResisterObserver(obj);
         blockList.Add(obj);
         obj.transform.DORestart();
         obj.transform.parent = null;
@@ -89,7 +90,10 @@ public class Spawner : Singleton<Spawner>
             posY++;
         }
 
-        Camera.main.transform.DOShakePosition(1, 0.1f);
+        //Ä«¸Þ¶ó Èçµé±â
+        CameraSetting.Instance.CameraShake();
+        // Camera.main.transform.DOShakePosition(1, 0.1f);
+        
         // ¸ÁÄ¡ ÈÖµÎ¸£±â
         hammer.transform.DORotate(new Vector3(0, 85 * isRight, 0), 0.1f).OnComplete(() =>
         {
@@ -107,6 +111,7 @@ public class Spawner : Singleton<Spawner>
     public void Next()
     {
         Push(blockList[0]);
+        GameManager.Instance.RemoveObserver(blockList[0]);
 
         blockList[0].transform.parent = blocks.transform;
         blockList[0].gameObject.SetActive(false);

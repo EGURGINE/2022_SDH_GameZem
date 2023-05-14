@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using DG.Tweening;
 
-public class GameManager : Singleton<GameManager>
+public class GameManager : Singleton<GameManager>,FeverObserver
 {
     [SerializeField] ParticleSystem particle;
 
@@ -20,6 +20,8 @@ public class GameManager : Singleton<GameManager>
     public ButtonManager buttonManager;
 
     public TextMeshProUGUI scoreTxt;
+
+    private List<IObserver> observers = new List<IObserver>();
 
     [SerializeField] private TextMeshProUGUI highScoreTxt;
     public int highScore;
@@ -38,11 +40,13 @@ public class GameManager : Singleton<GameManager>
         }
     }
 
-    [SerializeField] Slider feverSlider;
+    [SerializeField] Image feverSlider;
+    [SerializeField] GameObject feverSliderPC;
     [SerializeField] private float maxFever;
     private float curFever;
-    private bool isFeverTime;
+    public bool isFeverTime;
     [SerializeField] private ParticleSystem FeverPc;
+    [SerializeField] private ParticleSystem FeverBGPc;
 
 
     [SerializeField] Slider timeOverSlider;
@@ -87,7 +91,7 @@ public class GameManager : Singleton<GameManager>
     }
     private void Update()
     {
-        InputKey();
+        if(isGameOver == false) InputKey();
     }
 
     private void InputKey()
@@ -135,7 +139,7 @@ public class GameManager : Singleton<GameManager>
     }
     public void Checker(EColor _color)
     {
-        if(isFeverTime == true)
+        if(isFeverTime == true || Spawner.Instance.blockList[0].isFever == true)
         {
             NextBlock();
             particle.Play();
@@ -243,8 +247,10 @@ public class GameManager : Singleton<GameManager>
         curFever = maxFever;
 
         isFeverTime = true;
-
+        feverSliderPC.SetActive(true);
+        NotifyObserver();
         FeverPc.Play();
+        FeverBGPc.Play();
     }
     private void FeverValueSET(float value)
     {
@@ -260,11 +266,13 @@ public class GameManager : Singleton<GameManager>
             {
                 isFeverTime = false;
                 FeverPc.Stop();
+                FeverBGPc.Stop();
+                feverSliderPC.SetActive(false);
             }
             curFever = 0;
         }
 
-        feverSlider.value = curFever / maxFever;
+        feverSlider.fillAmount = curFever / maxFever;
 
     }
     public void StartSET()
@@ -276,7 +284,8 @@ public class GameManager : Singleton<GameManager>
         Score = 0;
         timeNum = 0;
         maxTime = 3f;
-        TimeOver = 0;
+        TimeOver = 0; 
+        curFever = 0;
         gameOver.SetActive(false);
         Spawner.Instance.StartGame();
     }
@@ -309,5 +318,23 @@ public class GameManager : Singleton<GameManager>
         gameOver.transform.position = new Vector3(0, 3.8f, -5.9f);
         gameOver.transform.DOLocalMove(Vector3.zero, 0.5f).SetEase(Ease.Linear);
         score = 0;
+    }
+
+    public void ResisterObserver(IObserver observer)
+    {
+        observers.Add(observer);
+    }
+
+    public void RemoveObserver(IObserver observer)
+    {
+        observers.Remove(observer);
+    }
+
+    public void NotifyObserver()
+    {
+        foreach (var observer in observers)
+        {
+            observer.ColorChange();
+        }
     }
 }
