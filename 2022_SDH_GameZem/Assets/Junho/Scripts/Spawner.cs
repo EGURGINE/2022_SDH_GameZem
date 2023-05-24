@@ -68,6 +68,8 @@ public class Spawner : Singleton<Spawner>
     }
     public void Pop(bool isSingle)
     {
+        if (isSingle == false && GameManager.Instance.isFeverTime == true) isSingle = true;
+
         Block obj;
         if (isSingle) obj = blockStack.Pop();
         else obj = doubleBlockStack.Pop();
